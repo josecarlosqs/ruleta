@@ -1,0 +1,62 @@
+<html>
+<head>
+	<title>Ruleta Ganadora</title>
+	<!-- 3 al 32 -->
+</head>
+<body>
+
+	<div id="ruleta"></div>
+	<div id="boton"><button onclick="iniciarRuleta();">Iniciar</button></div>
+
+<script type="text/javascript" src="js/bonsai-0.4.1.min.js"></script>
+<script type="text/javascript">
+var iniciarRuleta = function(){
+	alert(":v");
+}
+
+bonsai.run(document.getElementById('ruleta'), {
+    code: function() {
+    	var ruleta = new Group().addTo(stage);
+    	var circulo = new Circle(200, 200, 100)
+        	.addTo(ruleta)
+        	.attr('fillColor', 'gray');
+        	console.log((2*Math.PI*100)/29);
+        	var ts = 360;
+        	var fc = 362/29;
+      	for(var s = 3; s <=32; s++){
+      		new Text('s'+s).addTo(ruleta).attr({
+				  fontFamily: 'Arial, sans-serif',
+				  fontSize: '20',
+				  textFillColor: 'red',
+				  textStrokeColor: 'yellow',
+				  textStrokeWidth: 3,
+				  x: 100*Math.cos(ts)+200,
+				  y: 100*Math.sin(ts)+200
+				});
+      		ts -= fc;
+      	}
+      	/*var container = new Group().addTo(stage);
+
+for (var r = 0; r < 10; ++r) {
+  for (var c = 0; c < 10; ++c) {
+    new Rect(c*10, r*10, 10, 10).addTo(container).fill('random');
+  }
+}
+
+var anim = function() {
+  // Move the container to random locations
+  container.animate('1s', {
+    x: Math.random() * 500, y: Math.random() * 200
+  }, {
+    onEnd: anim, easing: 'elasticInOut'
+  });
+}
+
+anim();*/
+    },
+    width: 500,
+    height: 400
+  });
+</script>
+</body>
+</html>
